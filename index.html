@@ -18,6 +18,7 @@
 </head>
 
 <body>
+     <!--Video da pagina-->
     <div class="bg-video">
         <video class="video" autoplay loop muted>
             <source src="/assets/video/yugi.mp4" type="video/mp4" />
@@ -26,7 +27,7 @@
 
 
     <div class="container">
-
+        <!--lado esquerdo da pagina-->
         <div class="container__left framed-golden-2">
 
             <div class="score_box frame">
@@ -44,14 +45,24 @@
 
         </div>
 
-
+         <!--lado direito da pagina-->
         <div class="container__right">
-            <div class="csrd-box__container"></div>
+
+            <div class="card-box__container">
+
+                <div class="card-box framed" id="computer-cards"></div>
+
+                <div class="card-versus"></div>
+
+                <div class="card-box framed" id="player-cards"></div>
+
+            </div>
+
         </div>
 
     </div>
 
-
+     <!--likando a pagina com o JavaScript-->
     <script src="/scripts/engine.js" defer></script>
 </body>
 </html>
