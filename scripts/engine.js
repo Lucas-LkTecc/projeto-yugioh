@@ -1,3 +1,4 @@
+// CRIANDO OS STATES ENGINE
 const state = {
     score:{
         playerScore: 0,
@@ -18,6 +19,36 @@ const state = {
         buttom: document.getElementById("next-duel"),
     },
 };
+//CRIANDO A ENUMERAÇÃO DAS CARTAS
+const pathImages = "./assets/icons/";
+
+const cardData = [
+    {
+        id:0,
+        name:"Blue Eyes White Dragon",
+        type:"Paper",
+        img: `${pathImages}dragon.png`,
+        WinOf: [1],
+        LoserOf: [2],
+    },
+
+    {
+        id:1,
+        name:"Dark magician",
+        type:"Rock",
+        img: `${pathImages}magician.png`,
+        WinOf: [2],
+        LoserOf: [0],
+    },
+    {
+        id:2,
+        name:"Exodia",
+        type:"Scissors",
+        img: `${pathImages}exodia.png`,
+        WinOf: [0],
+        LoserOf: [1],
+    },
+]
 
 function init() {}
 
