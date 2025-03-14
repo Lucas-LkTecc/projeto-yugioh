@@ -55,6 +55,33 @@ const cardData = [
     },
 ]
 
+//IMPLEMENTANDO A LÓGICA DE SETAR CARTAS EM CAMPO
+async function getRandomCardId() {
+    const randomIndex = Math.floor(Math.random() * cardData.length);
+    return cardData[randomIndex].id;
+}
+
+async function createCardImage(randomIdCard, fieldSide) {
+    const cardImage = document.createElement("img");
+    cardImage.setAttribute("height", "100px");
+    cardImage.setAttribute("src", "./assets/icons/card-back.png");
+    cardImage.setAttribute("data-id", randomIdCard);
+    cardImage.classList.add("card")
+
+    if(fieldSide === playerSides.player1) {
+        cardImage.addEventListener("click", ()=>{
+            setCardsField(cardImage.getAttribute("data-id"));
+        })
+    }
+
+    cardImage.addEventListener("mouseover", ()=>{
+        drawSelectCard(randomIdCard);
+    });
+
+    return cardImage;
+
+}
+
 
 //CRIANDO ASSINATURA DAS FUNÇÕES PRINCIPAIS
 
