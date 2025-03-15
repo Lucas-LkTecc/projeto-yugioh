@@ -21,8 +21,8 @@ const state = {
 };
 //CRIANDO A ENUMERAÇÃO DAS CARTAS
 const playerSides = {
-    player1: "player-field-card",
-    computer: "computer-field-card",
+    player1: "player-cards",
+    computer: "computer-cards",
 };
 
 const pathImages = "./assets/icons/";
@@ -61,24 +61,24 @@ async function getRandomCardId() {
     return cardData[randomIndex].id;
 }
 
-async function createCardImage(randomIdCard, fieldSide) {
+async function createCardImage(IdCard, fieldSide) {
     const cardImage = document.createElement("img");
     cardImage.setAttribute("height", "100px");
-    cardImage.setAttribute("src", "./assets/icons/card-back.png");
-    cardImage.setAttribute("data-id", randomIdCard);
-    cardImage.classList.add("card")
+    cardImage.setAttribute("assets", "./assets/icons/card-back.png");
+    cardImage.setAttribute("data-id", IdCard);
+    cardImage.classList.add("card");
 
     if(fieldSide === playerSides.player1) {
         cardImage.addEventListener("click", ()=>{
             setCardsField(cardImage.getAttribute("data-id"));
-        })
+        });
     }
 
     cardImage.addEventListener("mouseover", ()=>{
-        drawSelectCard(randomIdCard);
+        drawSelectCard(IdCard);
     });
 
-    return cardImage;
+    //return cardImage;
 
 }
 
@@ -91,7 +91,7 @@ async function drawCards(cardNumbers, fieldSide) {
         const cardImage = await createCardImage(randomIdCard, fieldSide);
 
         document.getElementById(fieldSide).appendChild(cardImage);
-    }
+    };
 }
 
 function init() {
