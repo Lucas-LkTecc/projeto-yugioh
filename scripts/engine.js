@@ -9,7 +9,7 @@ const state = {
     cardSprites:{
         avatar: document.getElementById("card-image"),
         name: document.getElementById("card-name"),
-        type: document.getElementById("card-image"),
+        type: document.getElementById("card-type"),
     },
     fieldCards: {
         player: document.getElementById("player-field-card"),
@@ -64,29 +64,35 @@ async function getRandomCardId() {
 async function createCardImage(IdCard, fieldSide) {
     const cardImage = document.createElement("img");
     cardImage.setAttribute("height", "100px");
-    cardImage.setAttribute("assets", "./assets/icons/card-back.png");
+    cardImage.setAttribute("src", "./assets/icons/card-back.png");
     cardImage.setAttribute("data-id", IdCard);
     cardImage.classList.add("card");
 
     if(fieldSide === playerSides.player1) {
-        cardImage.addEventListener("click", ()=>{
+        cardImage.addEventListener("click", () => {
             setCardsField(cardImage.getAttribute("data-id"));
         });
     }
 
-    cardImage.addEventListener("mouseover", ()=>{
+    cardImage.addEventListener("mouseover", () => {
         drawSelectCard(IdCard);
     });
 
-    //return cardImage;
+    return cardImage;
 
 }
 
+//IMPLEMENTANDO MOUSEOVER
+async function drawSelectCard(index) {
+    state.cardSprites.avatar.src = cardData[index].img;
+    state.cardSprites.name.innerText = cardData[index].name;
+    state.cardSprites.type.innerText = "Attribute: " + cardData[index].type;
+}
 
 //CRIANDO ASSINATURA DAS FUNÇÕES PRINCIPAIS
 
 async function drawCards(cardNumbers, fieldSide) {
-    for(let i = 0; 1 <cardNumbers; i++) {
+    for(let i = 0; i <cardNumbers; i++) {
         const randomIdCard = await getRandomCardId();
         const cardImage = await createCardImage(randomIdCard, fieldSide);
 
